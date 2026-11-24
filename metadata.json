@@ -1,0 +1,6 @@
+{
+  "name": "Kinetix Spatial",
+  "description": "Real-time spatial computing and computer vision hand-tracking HUD with 21-landmark kinematics, gesture calibration, neural pipeline diagnostics, and forensic session telemetry.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

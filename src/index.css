@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-canvas: #0B1120;
+  --color-surface: #0d1322;
+  --color-surface-lowest: #080e1d;
+  --color-surface-low: #151b2b;
+  --color-surface-card: #16233B;
+  --color-surface-high: #242a3a;
+  --color-surface-highest: #2f3445;
+
+  --color-electric: #2563EB;
+  --color-cyan-glow: #06D6F0;
+  --color-violet-aura: #8B5CF6;
+  --color-emerald-ok: #10B981;
+  --color-amber-warn: #F59E0B;
+  --color-crimson-err: #EF4444;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: #0B1120;
+    color: #dde2f8;
+    font-family: var(--font-sans);
+    letter-spacing: 0.005em;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.25) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.22);
+    border-radius: 9999px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgba(6, 214, 240, 0.4);
+  }
+}
+
+/* Cyber-Kinetic HUD Elevation Layers */
+.hud-panel {
+  background: rgba(22, 35, 59, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hud-overlay {
+  background: rgba(22, 35, 59, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(6, 214, 240, 0.2);
+}
+
+.hud-reticle-glow {
+  box-shadow: 0 0 16px rgba(6, 214, 240, 0.35), 0 0 32px rgba(37, 99, 235, 0.25);
+}
+
+.btn-cyber-primary {
+  background: linear-gradient(135deg, #2563EB 0%, #06D6F0 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  transition: box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1), transform 140ms cubic-bezier(0.16, 1, 0.3, 1), filter 180ms ease;
+}
+
+.btn-cyber-primary:hover {
+  box-shadow: 0 0 20px rgba(6, 214, 240, 0.4);
+  filter: brightness(1.06);
+}
+
+.btn-cyber-primary:active {
+  transform: scale(0.985);
+}
+
+.btn-cyber-secondary {
+  background: rgba(22, 35, 59, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #dde2f8;
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+}
+
+.btn-cyber-secondary:hover,
+.btn-cyber-secondary:focus-visible {
+  border-color: #06D6F0;
+  color: #86ecff;
+  background: rgba(22, 35, 59, 0.9);
+  outline: none;
+}
+
+/* Form Input Wells — surgical 1px cyan ring, zero bleed */
+.hud-input {
+  background: rgba(11, 17, 32, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  color: #FFFFFF;
+  transition: border-color 150ms ease;
+}
+
+.hud-input:focus {
+  outline: none;
+  border-color: #06D6F0;
+  box-shadow: inset 0 0 0 0.5px #06D6F0;
+}
+
+/* Precision Range Sliders */
+input[type="range"].hud-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+input[type="range"].hud-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #06D6F0;
+  border: 2px solid #0B1120;
+  box-shadow: 0 0 10px rgba(6, 214, 240, 0.55);
+  cursor: pointer;
+  transition: transform 140ms ease;
+}
+
+input[type="range"].hud-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+input[type="range"].hud-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #06D6F0;
+  border: 2px solid #0B1120;
+  box-shadow: 0 0 10px rgba(6, 214, 240, 0.55);
+  cursor: pointer;
+}
+
+/* Telemetry & Label Caps */
+.label-caps {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes pinch-ripple {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animate-pinch-ripple {
+  animation: pinch-ripple 1.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pinch-ripple {
+    animation: none;
+  }
+}
